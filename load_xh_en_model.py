@@ -16,12 +16,11 @@ def load_xh_en_model():
     with urllib.request.urlopen("https://xhentrans.s3.amazonaws.com/tokenizer/xh_en/NMT_Entokenizer.pkl") as f:
         vocab_size_source, Eword2index, englishTokenizer, max_length_english = pkl.load(f)
 
-    with open('tokenizer/xh_en/NMT_Xhtokenizer.pkl', 'rb') as f:
+    with urllib.request.urlopen("https://xhentrans.s3.amazonaws.com/tokenizer/xh_en/NMT_Xhtokenizer.pkl") as f:
         vocab_size_target, Xword2index, xhosaTokenizer, max_length_xhosa = pkl.load(f)
 
-    with open('tokenizer/xh_en/NMT_data.pkl','rb') as f:
+    with urllib.request.urlopen("https://xhentrans.s3.amazonaws.com/tokenizer/xh_en/NMT_data.pkl") as f:
         X_train, y_train, X_test, y_test = pkl.load(f)
-
 
     # loading the model architecture and asigning the weights
     json_file = urlopen(url_json)
@@ -36,3 +35,7 @@ def load_xh_en_model():
 
     return [vocab_size_source, Eword2index, englishTokenizer, max_length_english, vocab_size_target, Xword2index, xhosaTokenizer, 
     max_length_xhosa, model_loaded, X_train, y_train, X_test, y_test];
+
+    
+
+
