@@ -28,7 +28,7 @@ def load_xh_en_model():
     model_loaded.load_weights(weights_path)
 
     return [vocab_size_source, Eword2index, englishTokenizer, max_length_english, vocab_size_target, Xword2index, xhosaTokenizer, 
-    max_length_xhosa, model_loaded, X_train, y_train, X_test, y_test];
+    max_length_xhosa, model_loaded];
     
 @st.cache(allow_output_mutation=True)
 def load_en_xh_model():
@@ -51,4 +51,4 @@ def load_en_xh_model():
     model_loaded.load_weights(weights_path)
 
     return [vocab_size_source, Eword2index, englishTokenizer, max_length_english, vocab_size_target, Xword2index, xhosaTokenizer, 
-    max_length_xhosa, model_loaded, X_train, y_train, X_test, y_test];
+    max_length_xhosa, model_loaded];
