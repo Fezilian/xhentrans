@@ -42,12 +42,12 @@ def show_trans_page():
 
     if ok:
         if pair == "isiXhosa to English":
-            [Eword2index, englishTokenizer, max_length_english, 
+            [vocab_size_source, vocab_size_target, Eword2index, englishTokenizer, max_length_english, 
             Xword2index, xhosaTokenizer, max_length_xhosa, model_loaded] = load_xh_en_model()
 
             selectedTokenizer = xhosaTokenizer
         else:
-            [Eword2index, englishTokenizer, max_length_english, 
+            [vocab_size_source, vocab_size_target, Eword2index, englishTokenizer, max_length_english, 
             Xword2index, xhosaTokenizer, max_length_xhosa, model_loaded] = load_en_xh_model()
             selectedTokenizer = englishTokenizer
 
