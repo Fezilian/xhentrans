@@ -9,6 +9,7 @@ import random
 from keras.utils import pad_sequences
 import pandas
 
+
 def show_trans_page():
 
     col1, col2, col3 = st.columns(3)
@@ -20,11 +21,11 @@ def show_trans_page():
     with col3:
         st.write(' ')
 
-    st.title("English isiXhosa Translator")
+    st.title("English IsiXhosa Translator")
 
     pairs = (
-        "isiXhosa to English",
-        "English to isiXhosa",)
+        "IsiXhosa to English",
+        "English to IsiXhosa",)
 
     st.write("##### Select Translation:")
     pair = st.selectbox("Select Translation:", pairs, label_visibility="collapsed")
@@ -41,13 +42,12 @@ def show_trans_page():
     target_text.text_area("Target text", disabled = True, label_visibility="collapsed")
 
     if ok:
-        if pair == "isiXhosa to English":
-            [vocab_size_source, vocab_size_target, Eword2index, englishTokenizer, max_length_english, 
+        if pair == "IsiXhosa to English":
+            [Eword2index, englishTokenizer, max_length_english, 
             Xword2index, xhosaTokenizer, max_length_xhosa, model_loaded] = load_xh_en_model()
-
             selectedTokenizer = xhosaTokenizer
         else:
-            [vocab_size_source, vocab_size_target, Eword2index, englishTokenizer, max_length_english, 
+            [Eword2index, englishTokenizer, max_length_english, 
             Xword2index, xhosaTokenizer, max_length_xhosa, model_loaded] = load_en_xh_model()
             selectedTokenizer = englishTokenizer
 
@@ -114,7 +114,7 @@ def show_trans_page():
             list_mystr_t_array01 = list_mystr_t_array.reshape(1,list_mystr_t_array.shape[0])
             list_mystr_t_pad = pad_sequences(list(list_mystr_t_array01), maxlen = max(max_length_english,max_length_xhosa), padding='post')
 
-            if pair == "isiXhosa to English":
+            if pair == "IsiXhosa to English":
                 target_text.text_area("Target text",f"{decode_sequence(list_mystr_t_pad.reshape(1,max(max_length_english,max_length_xhosa)),encoder_model, decoder_model, Eword2index, Eindex2word)}", disabled = True, label_visibility="collapsed")
             else:
                 target_text.text_area("Target text",f"{decode_sequence(list_mystr_t_pad.reshape(1,max(max_length_english,max_length_xhosa)),encoder_model, decoder_model, Xword2index, Xindex2word)}", disabled = True, label_visibility="collapsed")

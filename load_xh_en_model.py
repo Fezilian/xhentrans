@@ -23,16 +23,15 @@ def load_xh_en_model():
     model_loaded = model_from_json(loaded_model_json, custom_objects={'AttentionLayer': AttentionLayer})
     # load weights into new model
     weights_path = get_file(
-            'weights',
+            'weights_xh',
             'https://xhentrans.s3.amazonaws.com/models/xh_en/xh_en_model_weight.h5')
     model_loaded.load_weights(weights_path)
 
-    return [vocab_size_source, vocab_size_target, Eword2index, englishTokenizer, max_length_english, Xword2index, xhosaTokenizer, 
+    return [Eword2index, englishTokenizer, max_length_english, Xword2index, xhosaTokenizer, 
     max_length_xhosa, model_loaded];
     
-@st.cache(allow_output_mutation=True)
+@st.cache(allow_output_mutation=True)    
 def load_en_xh_model():
-
     with urllib.request.urlopen("https://xhentrans.s3.amazonaws.com/tokenizer/en_xh/en_xh_Entokenizer.pkl") as f:
         vocab_size_source, Eword2index, englishTokenizer, max_length_english = pkl.load(f)
 
@@ -45,11 +44,12 @@ def load_en_xh_model():
     json_file.close()
     model_loaded = model_from_json(loaded_model_json, custom_objects={'AttentionLayer': AttentionLayer})
     # load weights into new model
+    #model_loaded.load_weights("models/en_xh/NMT_model_weight.h5")
+
     weights_path = get_file(
-            'weights',
+            'weights_en',
             'https://xhentrans.s3.amazonaws.com/models/en_xh/en_xh_model_weight.h5')
     model_loaded.load_weights(weights_path)
 
-    return [vocab_size_source, vocab_size_target, Eword2index, englishTokenizer, max_length_english, Xword2index, xhosaTokenizer, 
+    return [Eword2index, englishTokenizer, max_length_english, Xword2index, xhosaTokenizer, 
     max_length_xhosa, model_loaded];
-    
