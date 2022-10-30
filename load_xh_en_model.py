@@ -27,7 +27,7 @@ def load_xh_en_model():
             'https://xhentrans.s3.amazonaws.com/models/xh_en/xh_en_model_weight.h5')
     model_loaded.load_weights(weights_path)
 
-    return [vocab_size_source, Eword2index, englishTokenizer, max_length_english, vocab_size_target, Xword2index, xhosaTokenizer, 
+    return [Eword2index, englishTokenizer, max_length_english, Xword2index, xhosaTokenizer, 
     max_length_xhosa, model_loaded];
     
 @st.cache(allow_output_mutation=True)
@@ -50,5 +50,5 @@ def load_en_xh_model():
             'https://xhentrans.s3.amazonaws.com/models/en_xh/en_xh_model_weight.h5')
     model_loaded.load_weights(weights_path)
 
-    return [vocab_size_source, Eword2index, englishTokenizer, max_length_english, vocab_size_target, Xword2index, xhosaTokenizer, 
+    return [Eword2index, englishTokenizer, max_length_english, Xword2index, xhosaTokenizer, 
     max_length_xhosa, model_loaded];
