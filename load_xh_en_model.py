@@ -36,7 +36,7 @@ def load_en_xh_model():
     with urllib.request.urlopen("https://xhentrans.s3.amazonaws.com/tokenizer/en_xh/en_xh_Entokenizer.pkl") as f:
         vocab_size_source, Eword2index, englishTokenizer, max_length_english = pkl.load(f)
 
-    with urllib.request.urlopen("https://xhentrans.s3.amazonaws.com/tokenizer/en_xh/en_xh_Entokenizer.pkl") as f:
+    with urllib.request.urlopen("https://xhentrans.s3.amazonaws.com/tokenizer/en_xh/xh_en_Xhtokenizer.pkl") as f:
         vocab_size_target, Xword2index, xhosaTokenizer, max_length_xhosa = pkl.load(f)
 
     # loading the model architecture and asigning the weights
@@ -52,3 +52,4 @@ def load_en_xh_model():
 
     return [vocab_size_source, vocab_size_target, Eword2index, englishTokenizer, max_length_english, Xword2index, xhosaTokenizer, 
     max_length_xhosa, model_loaded];
+    
