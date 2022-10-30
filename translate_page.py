@@ -119,7 +119,7 @@ def show_trans_page():
             else:
                 target_text.text_area("Target text",f"{decode_sequence(list_mystr_t_pad.reshape(1,max(max_length_english,max_length_xhosa)),encoder_model, decoder_model, Xword2index, Xindex2word)}", disabled = True, label_visibility="collapsed")
         except:
-            target_text.text_area("Target text","Oops! text cannot be translated", disabled = True, label_visibility="collapsed")
+            target_text.text_area("Oops! text cannot be translated, part/all text not available in our vocabolary at this stage", disabled = True, label_visibility="collapsed")
 
 
 def decode_sequence(input_seq, encoder_model, decoder_model, Eword2index, Eindex2word):
